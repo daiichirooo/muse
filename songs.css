@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --genre-color: #F4B400;
+    --genre-font: 'Inter', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--genre-color);
+    font-family: var(--genre-font);
+    overflow: hidden;
+    cursor: default;
+}
+
+.songs-container {
+    min-height: 100vh;
+    position: relative;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+.songs-container.slide-in-right {
+    animation: slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: both;
+    will-change: transform;
+}
+
+.songs-container.slide-out-right {
+    animation: slideOutToRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform;
+}
+
+
+.songs-container.slide-out-left {
+    animation: slideOutToLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform;
+}
+
+@keyframes slideOutToRight {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-150vh); }
+}
+
+@keyframes slideOutToLeft {
+    from { transform: translateX(0); }
+    to   { transform: translateX(100%); }
+}
+
+
+.back-arrow {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    color: #ffffff;
+    z-index: 100;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.back-arrow:hover {
+    transform: translateX(-5px);
+}
+
+
+.albums-stage {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+}
+
+.loading {
+    color: #ffffff;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+
+.album-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    cursor: none;
+    transition: transform 0.2s ease;
+}
+
+.album-item:hover {
+    transform: scale(1.05);
+}
+
+.album-name {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: none;
+}
+
+.artist-name {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+    font-size: 0.6em;
+}
+
+
+.album-item.size-lg { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.album-item.size-md { font-size: clamp(1.4rem, 3vw, 2rem); }
+.album-item.size-sm { font-size: clamp(1rem, 2vw, 1.5rem); }
+
+
+.custom-cursor {
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.custom-cursor.visible {
+  opacity: 1;
+}
+
+
+body.genre-hits {
+    --genre-color: #F4B400;
+    --genre-font: 'Inter', sans-serif;
+}
+
+body.genre-pop {
+    --genre-color: #FF6B9A;
+    --genre-font: 'Poppins', sans-serif;
+}
+
+body.genre-rnb {
+    --genre-color: #6A4C93;
+    --genre-font: 'Playfair Display', serif;
+}
+
+body.genre-rap {
+    --genre-color: #FF3B3B;
+    --genre-font: 'Bebas Neue', sans-serif;
+}
+
+body.genre-kpop {
+    --genre-color: #00C2FF;
+    --genre-font: 'Space Grotesk', sans-serif;
+}
